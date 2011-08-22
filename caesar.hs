@@ -17,7 +17,7 @@ main = do as <- getArgs
           ws <- readFile "/usr/share/dict/words"
           mapM_ putStrLn
                 [s | s <- rots $ unwords as,
-                     all (`elem` lines ws) $
+                     all (`elem` lines (map toLower ws)) $
                          words $ map toLower $ filter ( or
                                                       . (<*>) [isAlpha, isSpace]
                                                       . pure
